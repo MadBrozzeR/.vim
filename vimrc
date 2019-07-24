@@ -1,10 +1,10 @@
 syntax on
 set number                  " Show line number
 set colorcolumn=120         " Line length limiter line
-set tabstop=4               " Tab length
-set shiftwidth=4            " Tab length
+set tabstop=2               " Tab length
+set shiftwidth=2            " Tab length
 set autoindent              " Auto indent on new line
-set expandtab               " Use spaces instead of tabs in indentation
+set expandtab               " Use spaces instead of tabs for indentation
 set showmatch               " Show matching braces
 set nowrap                  " Do not wrap lines
 set formatoptions+=ro       " Auto inset comment mark on new line
@@ -13,6 +13,7 @@ set laststatus=2            " Always show status line
 set hlsearch                " Highlight search results
 set updatetime=1000         " Update render (for GIT diff check)
 set noswapfile              " Disable swap file creation
+set t_Co=256                " Set 256 colors for editor
 
 let NERDTreeQuitOnOpen=1    " Close NERDTree when item selected
 let NERDTreeShowHidden=1    " Show hidden files in NERDTree
