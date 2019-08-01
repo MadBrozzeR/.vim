@@ -2,7 +2,8 @@ syntax on
 set number                  " Show line number
 set colorcolumn=121         " Line length limiter line
 set tabstop=2               " Tab length
-set shiftwidth=2            " Tab length
+set shiftwidth=2            " Tab length (when indentaion is being shifted back)
+set softtabstop=2           " When backspace is pressed remove space characters number equal to tab size
 set autoindent              " Auto indent on new line
 set expandtab               " Use spaces instead of tabs for indentation
 set showmatch               " Show matching braces
@@ -22,10 +23,6 @@ set t_Co=256                " Set 256 colors for editor
 set listchars=tab:->,trail:~,extends:>,precedes:<,space:· " Set display values for non-printable characters
 set list                    " show non-printable characters
 
-let NERDTreeQuitOnOpen=1    " Close NERDTree when item selected
-let NERDTreeShowHidden=1    " Show hidden files in NERDTree
-
-map <c-o> :NERDTree % <CR>
 map <S-Tab> :tabprev <CR>
 map <Tab> :tabnext <CR>
 
@@ -36,11 +33,19 @@ nmap tsb :TsuquyomiGoBack<CR>
 nmap tssd :TsuquyomiSplitDefinition<CR>
 nmap tsi :echo tsuquyomi#hint()<CR>
 
-:autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ " I'm not sure about this line...
-
+" Setup NERDTree
+let NERDTreeQuitOnOpen=1    " Close NERDTree when item selected
+let NERDTreeShowHidden=1    " Show hidden files in NERDTree
+map <c-o> :NERDTree % <CR>
 " Auto open NERDTree if vim has been launched without path specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Setup Indent Guides plugin
+let g:indent_guides_enable_on_vim_startup = 1                                   " enable plugin
+let g:indent_guides_auto_colors = 0                                             " disable default colors
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=234 ctermfg=238     " set color for odd lines
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=235 ctermfg=238     " set color for even lines
 
 " Use plugins from 'bundle' directory
 execute pathogen#infect()

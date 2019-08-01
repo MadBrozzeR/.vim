@@ -9,6 +9,7 @@ REPOS=(
   https://github.com/djoshea/vim-autoread.git # Automatically reload files edited externally
   https://github.com/airblade/vim-gitgutter.git # Displays changed lines after last GIT commit
   https://github.com/editorconfig/editorconfig-vim.git # Read .editorconfig project files
+  git://github.com/nathanaelkane/vim-indent-guides.git # Display indentation level by altering GB color
 )
 LASTDIR=$PWD
 
