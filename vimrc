@@ -19,6 +19,8 @@ set wildmenu                " Show all submatched commands in menu
 set incsearch               " Search while typing
 set suffixesadd+=.js,.jsx,.ts,.tsx " Try to append suffixes while file searching
 set t_Co=256                " Set 256 colors for editor
+set visualbell              " Use visual blink instead of sound error notification
+set relativenumber          " Use line numbering relative to current line
 
 set listchars=tab:->,trail:~,extends:>,precedes:<,space:· " Set display values for non-printable characters
 set list                    " show non-printable characters
@@ -53,3 +55,6 @@ execute pathogen#infect()
 colorscheme atom-dark-256   " Set color scheme
 
 filetype plugin on " Enable plugins by file types (required for TypeScript server)
+
+" Override style highlighting
+autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
