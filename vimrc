@@ -28,6 +28,11 @@ set list                    " show non-printable characters
 map <S-Tab> :tabprev <CR>
 map <Tab> :tabnext <CR>
 
+" ALE key mappings
+nmap ,an :ALENextWrap<CR>
+nmap ,aN :ALEPreviousWrap<CR>
+nmap ,ad :ALEDetail<CR>
+
 " TypeScript key mappings
 nmap tsd :TsuquyomiDefinition<CR>
 nmap tst :TsuquyomiTypeDefinition<CR>
@@ -48,6 +53,11 @@ let g:indent_guides_enable_on_vim_startup = 1                                   
 let g:indent_guides_auto_colors = 0                                             " disable default colors
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=234 ctermfg=238     " set color for odd lines
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=235 ctermfg=238     " set color for even lines
+
+" Search selected text by //
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+
+" --------------------------------------
 
 " Use plugins from 'bundle' directory
 execute pathogen#infect()
