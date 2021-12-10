@@ -9,7 +9,7 @@ set expandtab               " Use spaces instead of tabs for indentation
 set showmatch               " Show matching braces
 set nowrap                  " Do not wrap lines
 set formatoptions+=ro       " Auto inset comment mark on new line
-set cursorline              " Highlight current line
+" set cursorline              " Highlight current line
 set laststatus=2            " Always show status line
 set hlsearch                " Highlight search results
 set updatetime=1000         " Update render (for GIT diff check)
@@ -27,6 +27,15 @@ set list                    " show non-printable characters
 
 map <S-Tab> :tabprev <CR>
 map <Tab> :tabnext <CR>
+map ,<Right> :vertical resize +5<CR>
+map ,<Left> :vertical resize -5<CR>
+map ,<Up> :resize +5<CR>
+map ,<Down> :resize -5<CR>
+" unmap annoying built-in mappings
+map <F1> <nop>
+map! <F1> <nop>
+nmap Q <nop>
+nmap q: <nop>
 
 " ALE key mappings
 nmap ,an :ALENextWrap<CR>
