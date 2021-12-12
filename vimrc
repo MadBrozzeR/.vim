@@ -25,12 +25,12 @@ set relativenumber          " Use line numbering relative to current line
 set listchars=tab:->,trail:~,extends:>,precedes:<,space:· " Set display values for non-printable characters
 set list                    " show non-printable characters
 
-map <S-Tab> :tabprev <CR>
-map <Tab> :tabnext <CR>
-map ,<Right> :vertical resize +5<CR>
-map ,<Left> :vertical resize -5<CR>
-map ,<Up> :resize +5<CR>
-map ,<Down> :resize -5<CR>
+nmap <S-Tab> :tabprev <CR>
+nmap <Tab> :tabnext <CR>
+nmap ,<Right> :vertical resize +5<CR>
+nmap ,<Left> :vertical resize -5<CR>
+nmap ,<Up> :resize +5<CR>
+nmap ,<Down> :resize -5<CR>
 " unmap annoying built-in mappings
 map <F1> <nop>
 map! <F1> <nop>
@@ -67,6 +67,11 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=235 ctermfg=238     
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " --------------------------------------
+
+" Setup COC autocompletion
+let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-html', 'coc-css']
+" let g:coc_config_home = '~/.vim/coc/'
+let g:coc_data_home = '~/.vim/coc/'
 
 " Use plugins from 'bundle' directory
 execute pathogen#infect()

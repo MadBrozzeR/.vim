@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 REPOS=(
   https://github.com/w0rp/ale.git # Linter rules highlighter
@@ -11,21 +11,48 @@ REPOS=(
   https://github.com/editorconfig/editorconfig-vim.git # Read .editorconfig project files
   git://github.com/nathanaelkane/vim-indent-guides.git # Display indentation level by altering GB color
   https://tpope.io/vim/fugitive.git # Git integration tool
+  https://github.com/alvan/vim-closetag.git # Autoclose HTML tags
+  https://github.com/neoclide/coc.nvim.git # Code autocompletion
+  https://github.com/MaxMEllon/vim-jsx-pretty.git # JSX syntax highlighting
 )
 LASTDIR=$PWD
+
+COLOR_RED='\033[0;31m'
+COLOR_GREEN='\033[0;32m'
+COLOR_CLEAR='\033[0m'
+COLOR_BLUE='\033[0;34m'
 
 if [ ! -d './bundle/' ]; then
   mkdir bundle
 fi
 
 cd bundle
+BUNDLEDIR=$PWD
+
+npm_install () {
+  local DIR=${1##*/}
+  local DIR=${DIR%.git}
+  cd $DIR
+
+  if type npm > /dev/null; then
+    if [ -e './package.json' ]; then
+      echo -e "${COLOR_GREEN}Installing nmp packages for $DIR (${COLOR_BLUE}$1${COLOR_GREEN})${COLOR_CLEAR}"
+      npm i
+    fi
+  else
+    echo -e "${COLOR_RED}You need to install NodeJS for $1${COLOR_CLEAR}"
+  fi
+
+  cd $BUNDLEDIR
+}
 
 if type git > /dev/null; then
   for repo in ${REPOS[@]}; do
-    git clone $repo
+    echo -e "${COLOR_GREEN}Clonning $repo${COLOR_CLEAR}"
+    git clone $repo && npm_install $repo
   done
 else
-  echo 'Install GIT first'
+  echo -e '${COLOR_RED}Install GIT first${COLOR_CLEAR}'
   cd $LASTDIR
   exit 1
 fi
