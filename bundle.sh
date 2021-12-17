@@ -17,6 +17,7 @@ REPOS=(
   https://github.com/neoclide/coc.nvim.git # Code autocompletion
   https://github.com/tpope/vim-surround.git # Manipulate surrounding entities (brackets, tags etc.)
   https://github.com/tpope/vim-repeat.git # Repeat with <.> key some plugin-provided actions (i.e. surround)
+  https://github.com/kien/ctrlp.vim.git # File search (Fuzzy)
 )
 LASTDIR=$PWD
 PLUGINDIR='./pack/plugins/start/'

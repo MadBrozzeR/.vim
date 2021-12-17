@@ -54,7 +54,7 @@ nmap tsi :echo tsuquyomi#hint()<CR>
 " Setup NERDTree
 let NERDTreeQuitOnOpen=1    " Close NERDTree when item selected
 let NERDTreeShowHidden=1    " Show hidden files in NERDTree
-nmap <c-o> :NERDTree % <CR>
+nmap <expr> <c-o> filereadable(@%) ? ':NERDTree %<CR>' : ':NERDTree<CR>'
 nmap ,<c-o> :NERDTree <CR>
 " Auto open NERDTree if vim has been launched without path specified
 autocmd StdinReadPre * let s:std_in=1
