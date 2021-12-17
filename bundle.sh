@@ -5,6 +5,8 @@ REPOS=(
   https://github.com/itchyny/lightline.vim # Customizable status line
   https://github.com/scrooloose/nerdtree.git # FileSystem tree viewer
   https://github.com/leafgarland/typescript-vim.git # TypeScript syntax highlighter
+  https://github.com/MaxMEllon/vim-jsx-pretty.git # JSX syntax highlighting
+  https://github.com/neoclide/jsonc.vim # JSON syntax highlighting
   https://github.com/Quramy/tsuquyomi.git # TypeScript IDE functionality
   https://github.com/djoshea/vim-autoread.git # Automatically reload files edited externally
   https://github.com/airblade/vim-gitgutter.git # Displays changed lines after last GIT commit
@@ -13,7 +15,6 @@ REPOS=(
   https://tpope.io/vim/fugitive.git # Git integration tool
   https://github.com/alvan/vim-closetag.git # Autoclose HTML tags
   https://github.com/neoclide/coc.nvim.git # Code autocompletion
-  https://github.com/MaxMEllon/vim-jsx-pretty.git # JSX syntax highlighting
 )
 LASTDIR=$PWD
 

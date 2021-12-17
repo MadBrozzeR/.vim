@@ -25,6 +25,8 @@ set relativenumber          " Use line numbering relative to current line
 set listchars=tab:->,trail:~,extends:>,precedes:<,space:· " Set display values for non-printable characters
 set list                    " show non-printable characters
 
+let $VIMHOME=expand('<sfile>:p:h') " get vim home directory
+
 nmap <S-Tab> :tabprev <CR>
 nmap <Tab> :tabnext <CR>
 nmap ,<Right> :vertical resize +5<CR>
@@ -52,7 +54,8 @@ nmap tsi :echo tsuquyomi#hint()<CR>
 " Setup NERDTree
 let NERDTreeQuitOnOpen=1    " Close NERDTree when item selected
 let NERDTreeShowHidden=1    " Show hidden files in NERDTree
-map <c-o> :NERDTree % <CR>
+nmap <c-o> :NERDTree % <CR>
+nmap ,<c-o> :NERDTree <CR>
 " Auto open NERDTree if vim has been launched without path specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -69,9 +72,9 @@ vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 " --------------------------------------
 
 " Setup COC autocompletion
-let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-html', 'coc-css']
-" let g:coc_config_home = '~/.vim/coc/'
-let g:coc_data_home = '~/.vim/coc/'
+let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-html', 'coc-css', 'coc-snippets']
+let g:coc_data_home = $VIMHOME.'/coc'
+let g:coc_config_home = g:coc_data_home
 
 " Use plugins from 'bundle' directory
 execute pathogen#infect()

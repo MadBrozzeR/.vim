@@ -1,2 +1,4 @@
 bundle/
-coc/
+coc/*
+!coc/ultisnips
+!coc/coc-settings.json
