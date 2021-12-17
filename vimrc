@@ -76,9 +76,6 @@ let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-html', 'coc-css'
 let g:coc_data_home = $VIMHOME.'/coc'
 let g:coc_config_home = g:coc_data_home
 
-" Use plugins from 'bundle' directory
-execute pathogen#infect()
-
 colorscheme atom-dark-256   " Set color scheme
 
 filetype plugin on " Enable plugins by file types (required for TypeScript server)

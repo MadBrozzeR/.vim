@@ -15,19 +15,22 @@ REPOS=(
   https://tpope.io/vim/fugitive.git # Git integration tool
   https://github.com/alvan/vim-closetag.git # Autoclose HTML tags
   https://github.com/neoclide/coc.nvim.git # Code autocompletion
+  https://github.com/tpope/vim-surround.git # Manipulate surrounding entities (brackets, tags etc.)
+  https://github.com/tpope/vim-repeat.git # Repeat with <.> key some plugin-provided actions (i.e. surround)
 )
 LASTDIR=$PWD
+PLUGINDIR='./pack/plugins/start/'
 
 COLOR_RED='\033[0;31m'
 COLOR_GREEN='\033[0;32m'
 COLOR_CLEAR='\033[0m'
 COLOR_BLUE='\033[0;34m'
 
-if [ ! -d './bundle/' ]; then
-  mkdir bundle
+if [ ! -d $PLUGINDIR ]; then
+  mkdir -p $PLUGINDIR
 fi
 
-cd bundle
+cd $PLUGINDIR
 BUNDLEDIR=$PWD
 
 npm_install () {

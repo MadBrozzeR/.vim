@@ -1,4 +1,4 @@
-bundle/
 coc/*
+pack/plugins/start
 !coc/ultisnips
 !coc/coc-settings.json
