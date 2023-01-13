@@ -18,6 +18,9 @@ REPOS=(
   https://github.com/tpope/vim-surround.git # Manipulate surrounding entities (brackets, tags etc.)
   https://github.com/tpope/vim-repeat.git # Repeat with <.> key some plugin-provided actions (i.e. surround)
   https://github.com/kien/ctrlp.vim.git # File search (Fuzzy)
+  https://github.com/slim-template/vim-slim.git
+  https://github.com/junegunn/goyo.vim.git # Distruction-free viewer
+  https://github.com/junegunn/limelight.vim.git # Dim inactive lines (to use in Goyo mode)
 )
 LASTDIR=$PWD
 PLUGINDIR='./pack/plugins/start/'

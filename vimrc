@@ -21,6 +21,8 @@ set suffixesadd+=.js,.jsx,.ts,.tsx " Try to append suffixes while file searching
 set t_Co=256                " Set 256 colors for editor
 set visualbell              " Use visual blink instead of sound error notification
 set relativenumber          " Use line numbering relative to current line
+set backspace=indent,eol,start " Use backspace for indentation removal
+set switchbuf+=usetab,split " Open quickfix items in new split or jump to existing tab
 
 set listchars=tab:->,trail:~,extends:>,precedes:<,space:· " Set display values for non-printable characters
 set list                    " show non-printable characters
@@ -51,11 +53,14 @@ nmap tsb :TsuquyomiGoBack<CR>
 nmap tssd :TsuquyomiSplitDefinition<CR>
 nmap tsi :echo tsuquyomi#hint()<CR>
 
+" Goyo key mappings
+nmap ,gy :Goyo<CR>
+
 " Setup NERDTree
 let NERDTreeQuitOnOpen=1    " Close NERDTree when item selected
 let NERDTreeShowHidden=1    " Show hidden files in NERDTree
 nmap <expr> <c-o> filereadable(@%) ? ':NERDTree %<CR>' : ':NERDTree<CR>'
-nmap ,<c-o> :NERDTree <CR>
+nmap ,<c-o> :NERDTreeFind <CR>
 " Auto open NERDTree if vim has been launched without path specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -68,11 +73,42 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=235 ctermfg=238     
 
 " Search selected text by //
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+" Git grep selected text
+vnoremap ,gg y:Ggrep -q "<C-R>=escape(@", '"')<CR>"<CR>
+vnoremap ,vgg y:vsplit<cr><C-W>L:Ggrep -q "<C-R>=escape(@", '"')<CR>"<CR>
+
+" Sync Limelight with Goyo
+function! s:goyoEnter()
+  Limelight
+  set nolist
+  set wrap
+endfunction
+function! s:goyoLeave()
+  Limelight!
+  set list
+  set nowrap
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyoEnter()
+autocmd! User GoyoLeave nested call <SID>goyoLeave()
+
+function! s:diffToggle()
+  if &diff
+    diffoff
+  else
+    diffthis
+  endif
+endfunction
+
+nmap <silent> ,dt :call <SID>diffToggle()<CR>
+
+" Use 'Tpl <name>' command to paste .vim/templates/<name>.tpl content at current cursor position
+command -nargs=1 Tpl exec printf('.-1read %s/templates/%s.tpl', $VIMHOME, <f-args>)
 
 " --------------------------------------
 
 " Setup COC autocompletion
-let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-html', 'coc-css', 'coc-snippets']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-html', 'coc-snippets']
 let g:coc_data_home = $VIMHOME.'/coc'
 let g:coc_config_home = g:coc_data_home
 
