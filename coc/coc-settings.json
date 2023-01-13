@@ -1,9 +1,13 @@
 {
   "typescript.validate.enable": false,
+  "typescript.preferences.quoteStyle": "single",
   "typescript.implementationsCodeLens.enable": false,
   "typescript.referencesCodeLens.enable": false,
+  "javascript.validate.enable": false,
   "javascript.implementationsCodeLens.enable": false,
   "javascript.referencesCodeLens.enable": false,
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
 
   "json.schemas": []
 }

@@ -37,3 +37,29 @@ export class ${1} extends React.Component<Props> {
 	}
 }
 endsnippet
+
+snippet react.fc "React function component"
+import React from 'react';
+
+type Props = {};
+
+export const ${1:Component}: React.FC<Props> = () => (
+  <div>
+    $0
+  </div>
+);
+endsnippet
+
+snippet react.fc.default "React function component"
+import React from 'react';
+
+type Props = {};
+
+const ${1:Component}: React.FC<Props> = () => (
+  <div>
+    $0
+  </div>
+);
+
+export default $1;
+endsnippet
