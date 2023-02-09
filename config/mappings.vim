@@ -17,6 +17,7 @@ nmap ,ad :ALEDetail<CR>
 
 " TypeScript key mappings
 nmap tsd :TsuquyomiDefinition<CR>
+nmap tsr :TsuquyomiReferences<CR>
 nmap tst :TsuquyomiTypeDefinition<CR>
 nmap tsb :TsuquyomiGoBack<CR>
 nmap tssd :TsuquyomiSplitDefinition<CR>
@@ -36,12 +37,8 @@ vnoremap ,gg y:Ggrep -q "<C-R>=escape(@", '"')<CR>"<CR>
 vnoremap ,vgg y:vsplit<cr><C-W>L:Ggrep -q "<C-R>=escape(@", '"')<CR>"<CR>
 
 " Toggle diff mode for current buffer
-function! s:diffToggle()
-  if &diff
-    diffoff
-  else
-    diffthis
-  endif
-endfunction
 
-nmap <silent> ,dt :call <SID>diffToggle()<CR>
+nmap <silent> ,dt :call g:DiffToggle()<CR>
+
+" Custom function mapping
+nmap <silent> <c-s> :call g:ToggleBool()<CR>
