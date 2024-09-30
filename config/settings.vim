@@ -21,7 +21,7 @@ set t_Co=256                " Set 256 colors for editor
 set visualbell              " Use visual blink instead of sound error notification
 set relativenumber          " Use line numbering relative to current line
 set backspace=indent,eol,start " Use backspace for indentation removal
-set switchbuf+=usetab,split " Open quickfix items in new split or jump to existing tab
+" set switchbuf+=usetab,split " Open quickfix items in new split or jump to existing tab
 
 set listchars=tab:->,trail:~,extends:>,precedes:<,space:· " Set display values for non-printable characters
 set list                    " show non-printable characters

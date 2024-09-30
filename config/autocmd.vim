@@ -23,3 +23,11 @@ autocmd! User GoyoLeave nested call <SID>goyoLeave()
 
 " Override style highlighting
 autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
+
+autocmd VimEnter,Colorscheme * :hi CocMenuSel ctermfg=231 ctermbg=244 guifg=fg guibg=#808080 " redefine menu selection color
+
+autocmd InsertEnter * :hi LineNr ctermfg=yellow
+autocmd InsertLeave * :hi LineNr ctermfg=66
+
+" Some random autocmds
+autocmd BufWinLeave * let @b = expand('%:p') " Save closed file full path to @b registry

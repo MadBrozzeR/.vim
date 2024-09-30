@@ -14,6 +14,7 @@ nmap q: <nop>
 nmap ,an :ALENextWrap<CR>
 nmap ,aN :ALEPreviousWrap<CR>
 nmap ,ad :ALEDetail<CR>
+nmap ,afp :ALEFix prettier<CR>
 
 " TypeScript key mappings
 nmap tsd :TsuquyomiDefinition<CR>
@@ -39,6 +40,12 @@ vnoremap ,vgg y:vsplit<cr><C-W>L:Ggrep -q "<C-R>=escape(@", '"')<CR>"<CR>
 " Toggle diff mode for current buffer
 
 nmap <silent> ,dt :call g:DiffToggle()<CR>
+
+" Select item from autocomplete by pressing Enter key
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+
+" Buffer related mappings
+nmap <silent> ,vb :execute('vsplit' . @b)<CR>
 
 " Custom function mapping
 nmap <silent> <c-s> :call g:ToggleBool()<CR>

@@ -24,7 +24,7 @@
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 
-snippet comp "React component"
+snippet react.comp "React component"
 import React from 'react'
 
 type Props = {}
@@ -62,4 +62,16 @@ const ${1:Component}: React.FC<Props> = () => (
 );
 
 export default $1;
+endsnippet
+
+snippet test.describe "Describe jest test"
+describe('$1', () => {
+	$0
+});
+endsnippet
+
+snippet test.it "Jest it"
+it('$1', () => {
+	$0
+});
 endsnippet

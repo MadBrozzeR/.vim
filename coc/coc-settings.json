@@ -9,5 +9,6 @@
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
 
-  "json.schemas": []
+  "json.schemas": [],
+  "snippets.ultisnips.pythonPrompt": false
 }
