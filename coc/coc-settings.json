@@ -10,5 +10,21 @@
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
 
   "json.schemas": [],
-  "snippets.ultisnips.pythonPrompt": false
+  "snippets.ultisnips.pythonPrompt": false,
+  "json.schemaDownload.trustedDomains": {
+    "https://www.schemastore.org": true
+  }
+  // Disable automatic global fallbacks; force coc-tsserver to look strictly inside the project
+  "tsserver.useLocalTsdk": true,
+  // The TS 7+ Go-native LSP for modern projects
+  "languageserver": {
+    "typescript-native": {
+      "command": "npx",
+      "args": ["tsc", "--lsp", "--stdio"],
+      "filetypes": ["typescript", "typescriptreact", "javascript", "javascriptreact"],
+      "rootPatterns": ["tsconfig.json", "package.json"]
+    }
+  },
+  "diagnostic.displayByAle": false,
+  "diagnostic.enable": true
 }

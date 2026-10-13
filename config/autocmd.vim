@@ -31,3 +31,21 @@ autocmd InsertLeave * :hi LineNr ctermfg=66
 
 " Some random autocmds
 autocmd BufWinLeave * let @b = expand('%:p') " Save closed file full path to @b registry
+" Ensure your highlight overrides are applied asynchronously after CoC fully initializes
+augroup CocCustomHighlights
+  autocmd!
+  " Apply highlights when Vim finishes loading and whenever the colorscheme changes
+  autocmd VimEnter,ColorScheme * call s:SetupCocHighlights()
+augroup END
+
+function! s:SetupCocHighlights() abort
+  " Link CoC's exact-match highlights to Vim's native error spelling engine
+  highlight! link CocErrorHighlight   SpellBad
+  highlight! link CocWarningHighlight SpellCap
+  highlight! link CocInfoHighlight    SpellLocal
+  highlight! link CocHintHighlight    SpellRare
+
+  " Clean up line backgrounds so only the exact mistake stands out
+  highlight! clear CocErrorLine
+  highlight! clear CocWarningLine
+endfunction

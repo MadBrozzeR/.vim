@@ -11,18 +11,18 @@ nmap Q <nop>
 nmap q: <nop>
 
 " ALE key mappings
-nmap ,an :ALENextWrap<CR>
-nmap ,aN :ALEPreviousWrap<CR>
-nmap ,ad :ALEDetail<CR>
-nmap ,afp :ALEFix prettier<CR>
+nmap <silent> ,an <Plug>(coc-diagnostic-next)
+nmap <silent> ,aN <Plug>(coc-diagnostic-prev)
+nmap <silent> ,ad :call CocActionAsync('diagnosticInfo')<CR>
+nmap <silent> ,afp :call CocActionAsync('format')<CR>
 
 " TypeScript key mappings
-nmap tsd :TsuquyomiDefinition<CR>
-nmap tsr :TsuquyomiReferences<CR>
-nmap tst :TsuquyomiTypeDefinition<CR>
-nmap tsb :TsuquyomiGoBack<CR>
-nmap tssd :TsuquyomiSplitDefinition<CR>
-nmap tsi :echo tsuquyomi#hint()<CR>
+nmap tsd <Plug>(coc-definition)
+nmap tsr <Plug>(coc-references)
+nmap tst <Plug>(coc-type-definition)
+nnoremap tsb <C-o>
+nmap tssd :call CocActionAsync('jumpDefinition', 'split')<CR>
+nmap tsi :call CocActionAsync('doHover')<CR>
 
 " Goyo key mappings
 nmap ,gy :Goyo<CR>
